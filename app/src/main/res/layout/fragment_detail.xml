@@ -1,51 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/fragment_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/fragment_detail_date"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/distanceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/distance_0_0_mi"
-        android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp" />
+        android:textSize="75sp"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="-5dp"
+        app:layout_constraintStart_toStartOf="@+id/fragment_date"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_date" />
+
+    <TextView
+        android:id="@+id/miles_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/miles"
+        android:textSize="20sp"
+        android:layout_marginTop="-15dp"
+        app:layout_constraintStart_toStartOf="@id/distanceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/distanceTextView" />
+
+    <TextView
+        android:id="@+id/time_text_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time"
+        app:layout_constraintTop_toBottomOf="@id/durationTextView"
+        app:layout_constraintStart_toStartOf="@id/durationTextView"
+
+        />
 
     <TextView
         android:id="@+id/durationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/duration_00_00_00"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/distanceTextView"
-        app:layout_constraintStart_toStartOf="@id/distanceTextView"
-        android:layout_marginTop="8dp" />
-
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/miles_text"
+        app:layout_constraintTop_toBottomOf="@+id/miles_text" />
 
     <TextView
         android:id="@+id/paceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
         android:text="@string/pace_0_00_min_mi"
-        android:textSize="18sp"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.231"
-        app:layout_constraintStart_toEndOf="@+id/distanceTextView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/durationTextView" />
+
+    <TextView
+        android:id="@+id/pace_text_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pace"
+        app:layout_constraintTop_toBottomOf="@id/paceTextView"
+        app:layout_constraintStart_toStartOf="@id/paceTextView"
+        />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mapFragment"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/durationTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/paceTextView"
+        app:layout_constraintStart_toStartOf="@+id/durationTextView"
+        app:layout_constraintTop_toBottomOf="@+id/time_text_placeholder"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="16dp" />
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

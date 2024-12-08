@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,9 +58,10 @@ public class RunFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
 
+        NavController navController = NavHostFragment.findNavController(this);
+
         // Set the adapter
         Context context = view.getContext();
-<<<<<<< HEAD
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
         TextView emptyMessage = view.findViewById(R.id.emptyMessage); // Add reference to TextView
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -76,7 +79,7 @@ public class RunFragment extends Fragment {
         }
 
         // Set adapter
-        RViewAdapter adapter = new RViewAdapter(runs, getContext());
+        RViewAdapter adapter = new RViewAdapter(runs, getContext(), navController);
         recyclerView.setAdapter(adapter);
 
         // Setup swipe-to-delete

@@ -74,7 +74,6 @@ public class StartRun extends Fragment implements MapHandler.LocationUpdateListe
             mapHandler.initializeMap(mapFragment);
         }
 
-<<<<<<< HEAD
         timeView = view.findViewById(R.id.timeView); // Get timeview resource
 
         distanceView = view.findViewById(R.id.distanceValueView);
@@ -169,7 +168,6 @@ public class StartRun extends Fragment implements MapHandler.LocationUpdateListe
     }
 
     public void saveRun() {
-<<<<<<< HEAD
 
         pauseTimer();
         String currentDate = getCurrentDate();

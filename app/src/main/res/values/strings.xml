@@ -7,7 +7,15 @@
     <string name="start_a_new_run">START</string>
     <string name="view_previous_runs">Previous Runs</string>
     <string name="welcome_back">Welcome back!</string>
-<<<<<<< HEAD
+    <string name="error_fetching_weather_data">Error fetching weather data</string>
+    <string name="weather_data_unavailable">Weather data unavailable</string>
+    <string name="pace_n_a">Pace: N/A</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="_00_00_00">00:00:00</string>
+    <string name="distance_0_0_mi">0.0</string>
+    <string name="duration_00_00_00">00:00:00</string>
+    <string name="pace_0_00_min_mi">0:00</string>
     <string name="start">Start</string>
     <string name="_00_00">00:00</string>
     <string name="_0_00_mi_min">0.00 min/mi</string>
@@ -23,4 +31,8 @@
     <string name="date">Date</string>
     <string name="fragment_distance">Distance</string>
     <string name="duration">Duration</string>
+    <string name="fragment_detail_date">2024–12–07 18:35:53</string>
+    <string name="miles">Miles</string>
+    <string name="pace">Pace</string>
+    <string name="time">Time</string>
 </resources>

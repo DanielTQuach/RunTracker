@@ -1,16 +1,16 @@
 package com.example.runtracker;
 
 import androidx.annotation.NonNull;
-<<<<<<< HEAD
 
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.ContentUris;
 import android.content.Context;
 import android.net.Uri;
-<<<<<<< HEAD
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +20,9 @@ import android.widget.Toast;
 import com.example.runtracker.placeholder.PlaceholderContent.PlaceholderItem;
 import com.example.runtracker.databinding.FragmentItemBinding;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -29,10 +32,12 @@ import java.util.Locale;
 public class RViewAdapter extends RecyclerView.Adapter<RViewAdapter.ViewHolder> {
     private final List<Run> mValues;
     private final Context mContext;
+    private final NavController navController;
 
-    public RViewAdapter(List<Run> items, Context context) {
+    public RViewAdapter(List<Run> items, Context context, NavController navController) {
         mValues = items;
         mContext = context;
+        this.navController = navController;
     }
 
     @NonNull
@@ -49,20 +54,38 @@ public class RViewAdapter extends RecyclerView.Adapter<RViewAdapter.ViewHolder> 
         Run run = mValues.get(position);
 
         // Set the ID
-<<<<<<< HEAD
         holder.mIdView.setText("Run #" + run.getRunID());
 
         // Set the date, display "N/A" if null
         String date = run.getDate();
-        holder.mDateView.setText(date != null && !date.isEmpty() ? date : "Date: N/A");
+
+        // fetching date and splitting into date and time
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date parsedDate = null;
+        try {
+            parsedDate = inputFormat.parse(date);
+        } catch (ParseException ignored) {}
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MMM. dd, yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+        assert parsedDate != null;
+        String datePart = dateFormat.format(parsedDate);
+        String timePart = timeFormat.format(parsedDate);
+
+        holder.mDateView.setText(!date.isEmpty() ? datePart + " at " + timePart : "N/A");
 
         // Set the distance
         holder.mDistanceView.setText(String.format(Locale.getDefault(), "Distance:\n %.2f mi", run.getDistance()));
 
         // Set the duration, display "00:00:00" if null or empty
         String formattedTime = run.getFormattedTotalTime();
-<<<<<<< HEAD
         holder.mDurationView.setText(formattedTime != null && !formattedTime.isEmpty() ? "Time:\n " + formattedTime : "Time: 00:00:00");
+
+        holder.itemContent.setOnClickListener(v -> {
+            Bundle args = new Bundle();
+            args.putLong("runId", run.getRunID());
+
+            navController.navigate(R.id.action_runFragment_to_detailFragment, args);
+        });
     }
 
     @Override

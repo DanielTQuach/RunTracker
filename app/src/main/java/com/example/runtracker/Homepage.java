@@ -1,9 +1,5 @@
 package com.example.runtracker;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d4d2e2eadb9cb5e094728fe9d817201d96aa0db4
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -62,10 +58,9 @@ public class Homepage extends Fragment {
         View view = inflater.inflate(R.layout.fragment_homepage, container, false);
         Button startRunButton = view.findViewById(R.id.startNewRunButton);
         Button viewRunsButton = view.findViewById(R.id.viewPreviousRunsButton);
-        Button uninstallButton = view.findViewById(R.id.uninstallButton);
         dateTextView = view.findViewById(R.id.dateTextView);
         weatherTextView = view.findViewById(R.id.weatherTextView);
-<<<<<<< HEAD
+
         settingsBtn = view.findViewById(R.id.settingsBtn);
         startRunButton.setOnClickListener(new View.OnClickListener() {
             @Override

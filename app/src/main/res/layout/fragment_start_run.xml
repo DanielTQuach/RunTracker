@@ -20,7 +20,6 @@
         android:id="@+id/timeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_marginTop="30dp"
         android:text="@string/_00_00"
         android:textColor="@android:color/black"
@@ -35,7 +34,6 @@
         android:id="@+id/averagePaceValueView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:text="@string/_0_00_mi_min"
@@ -52,7 +50,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/average_pace"
-<<<<<<< HEAD
         android:textColor="@android:color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@id/averagePaceValueView"
@@ -64,7 +61,6 @@
         android:id="@+id/distanceValueView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_marginEnd="50dp"
         android:text="@string/_0_00_mi"
         android:textColor="@android:color/black"
@@ -78,7 +74,6 @@
         android:id="@+id/distanceLabelView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:text="@string/distance"
         android:textColor="@android:color/black"
         android:textSize="14sp"
@@ -86,7 +81,6 @@
         app:layout_constraintStart_toStartOf="@id/distanceValueView"
         app:layout_constraintTop_toBottomOf="@id/distanceValueView" />
 
-<<<<<<< HEAD
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/startPauseButton"
         android:layout_width="150dp"
@@ -104,7 +98,6 @@
         app:layout_constraintEnd_toEndOf="parent"/>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/resetButton"
-<<<<<<< HEAD
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_button"

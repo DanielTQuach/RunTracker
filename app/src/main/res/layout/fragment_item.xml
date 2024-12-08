@@ -12,7 +12,6 @@
         android:padding="15dp"
         tools:ignore="UselessParent">
 
-<<<<<<< HEAD
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -78,5 +77,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-<<<<<<< HEAD
 </FrameLayout>

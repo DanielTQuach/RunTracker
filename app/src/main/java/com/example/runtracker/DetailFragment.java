@@ -18,7 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -27,6 +30,7 @@ public class DetailFragment extends Fragment {
     private TextView distanceTextView;
     private TextView durationTextView;
     private TextView paceTextView;
+    private TextView fragment_date;
     private GoogleMap map;
 
     public DetailFragment() {}
@@ -46,24 +50,26 @@ public class DetailFragment extends Fragment {
         distanceTextView = view.findViewById(R.id.distanceTextView);
         durationTextView = view.findViewById(R.id.durationTextView);
         paceTextView = view.findViewById(R.id.paceTextView);
-
+        fragment_date = view.findViewById(R.id.fragment_date);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapFragment);
         if (mapFragment != null) {
             mapFragment.getMapAsync(googleMap -> {
                 map = googleMap;
-                loadRunDetails();
+                try {
+                    loadRunDetails();
+                } catch (ParseException ignored) {}
             });
         }
         return view;
     }
 
     @SuppressLint("DefaultLocale")
-    private void loadRunDetails() {
+    private void loadRunDetails() throws ParseException {
         // Query for run details
         Cursor runCursor = requireActivity().getContentResolver().query(
                 RunContentProvider.CONTENT_URI,
-                new String[]{"distance", "duration"}, // Make sure column names match your DB schema
+                new String[]{"distance", "duration", "date"}, // Make sure column names match your DB schema
                 "id=?",
                 new String[]{String.valueOf(runId)},
                 null
@@ -72,20 +78,31 @@ public class DetailFragment extends Fragment {
         if (runCursor != null && runCursor.moveToFirst()) {
             int distanceIndex = runCursor.getColumnIndex("distance");
             int durationIndex = runCursor.getColumnIndex("duration");
-
+            int dateIndex = runCursor.getColumnIndex("date");
             if (distanceIndex >= 0 && durationIndex >= 0) {
                 float distance = runCursor.getFloat(distanceIndex);
                 int duration = runCursor.getInt(durationIndex);
 
-                distanceTextView.setText(String.format("Distance: %.2f mi", distance));
-                durationTextView.setText(String.format("Duration: %02d:%02d:%02d",
+                // fetching date and splitting into date and time
+                String date = runCursor.getString(dateIndex);
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date parsedDate = inputFormat.parse(date);
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MMM. dd, yyyy");
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+                assert parsedDate != null;
+                String datePart = dateFormat.format(parsedDate);
+                String timePart = timeFormat.format(parsedDate);
+
+                fragment_date.setText(String.format("Ran on " + datePart + " at " + timePart));
+                distanceTextView.setText(String.format("%.2f", distance));
+                durationTextView.setText(String.format("%02d:%02d:%02d",
                         duration / 3600, (duration % 3600) / 60, duration % 60));
 
                 // Calculate and display average pace
                 if (distance > 0) {
                     float durationInMinutes = duration / 60.0f;
                     float averagePace = durationInMinutes / distance; // In minutes per mile
-                    paceTextView.setText(String.format(Locale.getDefault(), "Pace: %.2f min/mi", averagePace));
+                    paceTextView.setText(String.format(Locale.getDefault(), "%.2f min/mi", averagePace));
                 } else {
                     paceTextView.setText(R.string.pace_n_a); // Handle case where distance is 0
                 }
