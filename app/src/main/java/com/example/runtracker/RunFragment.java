@@ -62,7 +62,7 @@ public class RunFragment extends Fragment {
 
         // Set the adapter
         Context context = view.getContext();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
+        RecyclerView recyclerView = view.findViewById(R.id.list);
         TextView emptyMessage = view.findViewById(R.id.emptyMessage); // Add reference to TextView
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 

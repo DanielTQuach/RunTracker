@@ -36,14 +36,9 @@ public class StartRun extends Fragment implements MapHandler.LocationUpdateListe
     // For run
     Run currentRun = new Run(0, null, 0, 0.0f); // Initialize a temp run
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
-
     public StartRun() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -33,7 +33,6 @@ import org.json.JSONObject;
 public class Homepage extends Fragment {
     private TextView dateTextView;
     private TextView weatherTextView;
-    private ImageButton settingsBtn;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -61,7 +60,7 @@ public class Homepage extends Fragment {
         dateTextView = view.findViewById(R.id.dateTextView);
         weatherTextView = view.findViewById(R.id.weatherTextView);
 
-        settingsBtn = view.findViewById(R.id.settingsBtn);
+        ImageButton settingsBtn = view.findViewById(R.id.settingsBtn);
         startRunButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,10 +149,5 @@ public class Homepage extends Fragment {
 
         RequestQueue queue = Volley.newRequestQueue(requireContext());
         queue.add(jsonObjectRequest);
-    }
-
-    private void uninstall() {
-        Intent delete = new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + requireContext().getPackageName()));
-        startActivity(delete);
     }
 }
