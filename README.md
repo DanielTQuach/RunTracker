@@ -1,5 +1,5 @@
 ## APK for RunTracker
-(https://github.com/DanielTQuach/RunTracker/blob/master/RunTracker.apk)
+https://github.com/DanielTQuach/RunTracker/blob/master/RunTracker.apk
 
 ## Group 2 Backlog
 https://docs.google.com/spreadsheets/d/1i3ftCbQx483KBk77YxXB4PLRuT1_NMBtW7F7ztvULtc/edit?usp=sharing
